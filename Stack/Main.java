@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.StringTokenizer;
 
 public class Main {
+	
 	static List<Integer> stack = new ArrayList<>();
 	public static void push(int x) {
 		stack.add(0, x);
