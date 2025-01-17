@@ -1,0 +1,15 @@
+-- ORACLE
+/*
+    INS 차집합 OUTS 인 TABLE 만들기
+    위의 TABLE과 INS를 JOIN
+    그 중에 TOP 3 : 정렬된 TABLE에서 ROWNUM >= 3인 행만 출력
+    정렬
+*/
+SELECT NAME, DATETIME
+FROM (SELECT *
+      FROM (SELECT ANIMAL_ID FROM ANIMAL_INS
+            MINUS
+            SELECT ANIMAL_ID FROM ANIMAL_OUTS) M JOIN ANIMAL_INS I
+                ON M.ANIMAL_ID = I.ANIMAL_ID
+      ORDER BY DATETIME ASC)
+WHERE ROWNUM <= 3;
